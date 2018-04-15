@@ -1,6 +1,6 @@
 ﻿namespace Tennis
 {
-    class Score
+    public class Score
     {
         int score;
 

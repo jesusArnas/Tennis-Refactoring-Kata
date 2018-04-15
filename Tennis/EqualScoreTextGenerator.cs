@@ -2,26 +2,27 @@
 {
     internal class EqualScoreTextGenerator : IScoreTextGenerator
     {
-        private Score score;
+        private Player player;
 
-        public EqualScoreTextGenerator(Score score)
+        public EqualScoreTextGenerator(Player player)
         {
-            this.score = score;
+            this.player = player;
         }
 
         public string GetScore()
         {
-            if (score.GetValue() == 0)
+            int score = player.GetScore();
+            if (score == 0)
             {
                 return "Love-All";
             }
 
-            if (score.GetValue() == 1)
+            if (score == 1)
             {
                 return "Fifteen-All";
             }
 
-            if (score.GetValue() == 2)
+            if (score == 2)
             {
                 return "Thirty-All";
             }

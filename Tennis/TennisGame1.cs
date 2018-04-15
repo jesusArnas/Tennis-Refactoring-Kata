@@ -2,33 +2,32 @@ namespace Tennis
 {
     class TennisGame1 : ITennisGame
     {
-        private Score m_score1 = new Score();
-        private Score m_score2 = new Score();
-        private string player1Name;
-        private string player2Name;
+        private Player player1;
+        private Player player2;
 
         public TennisGame1(string player1Name, string player2Name)
         {
-            this.player1Name = player1Name;
-            this.player2Name = player2Name;
+            this.player1 = new Player(player1Name);
+            this.player2 = new Player(player2Name);
         }
 
         public void WonPoint(string playerName)
         {
-            if (IsPlayer1Turn(playerName))
-                m_score1.IncreaseScore();
-            else
-                m_score2.IncreaseScore();
+            Player player = GetPlayerForName(playerName);
+            player.IncreaseScore();
         }
 
         public string GetScore()
         {
-            return new ScoreTextGeneratorFactory(m_score1, m_score2).GetScoreTextGenerator().GetScore();
+            return new ScoreTextGeneratorFactory(player1, player2).GetScoreTextGenerator().GetScore();
         }
        
-        private bool IsPlayer1Turn(string playerName)
+        private Player GetPlayerForName(string playerName)
         {
-            return playerName == this.player1Name;
+            if (playerName == player1.GetPlayerName())
+                return player1;
+
+            return player2;
         }
     }
 }

@@ -2,18 +2,18 @@
 {
     internal class InitialPointsTextGenerator : IScoreTextGenerator
     {
-        private Score score1;
-        private Score score2;
+        private Player player1;
+        private Player player2;
 
-        public InitialPointsTextGenerator(Score score1, Score score2)
+        public InitialPointsTextGenerator(Player player1, Player player2)
         {
-            this.score1 = score1;
-            this.score2 = score2;
+            this.player1 = player1;
+            this.player2 = player2;
         }
 
         public string GetScore()
         {
-            return GetScoreAsText(score1.GetValue()) + "-" + GetScoreAsText(score2.GetValue());
+            return GetScoreAsText(player1.GetScore()) + "-" + GetScoreAsText(player2.GetScore());
         }
 
         private string GetScoreAsText(int score)
