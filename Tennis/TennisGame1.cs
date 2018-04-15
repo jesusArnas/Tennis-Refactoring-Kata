@@ -2,12 +2,10 @@ namespace Tennis
 {
     class TennisGame1 : ITennisGame
     {
-        private int m_score1 = 0;
-        private int m_score2 = 0;
+        private Score m_score1 = new Score();
+        private Score m_score2 = new Score();
         private string player1Name;
         private string player2Name;
-
-        enum prueba {a, b, c }
 
         public TennisGame1(string player1Name, string player2Name)
         {
@@ -18,9 +16,9 @@ namespace Tennis
         public void WonPoint(string playerName)
         {
             if (IsPlayer1Turn(playerName))
-                m_score1 += 1;
-            else 
-                m_score2 += 1;
+                m_score1.IncreaseScore();
+            else
+                m_score2.IncreaseScore();
         }
 
         public string GetScore()
@@ -40,10 +38,10 @@ namespace Tennis
 
         private string GetRegularScore()
         {
-            return GetTextForScore(m_score1) + "-" + GetTextForScore(m_score2);
+            return GetScoreAsText(m_score1.GetValue()) + "-" + GetScoreAsText(m_score2.GetValue());
         }
 
-        private static string GetTextForScore(int score)
+        private string GetScoreAsText(int score)
         {
             if (score == 0)
             {
@@ -66,7 +64,7 @@ namespace Tennis
         private string GetWinOrAdvantageScore()
         {
             string score;
-            var minusResult = m_score1 - m_score2;
+            var minusResult = m_score1.GetValue() - m_score2.GetValue();
             if (minusResult == 1) score = "Advantage player1";
             else if (minusResult == -1) score = "Advantage player2";
             else if (minusResult >= 2) score = "Win for player1";
@@ -77,7 +75,7 @@ namespace Tennis
         private string GetEqualsScore()
         {
             string score;
-            switch (m_score1)
+            switch (m_score1.GetValue())
             {
                 case 0:
                     score = "Love-All";
@@ -109,7 +107,7 @@ namespace Tennis
 
         private bool IsWinOrAdvantageScore()
         {
-            return m_score1 >= 4 || m_score2 >= 4;
+            return m_score1.GetValue() >= 4 || m_score2.GetValue() >= 4;
         }
     }
 }
