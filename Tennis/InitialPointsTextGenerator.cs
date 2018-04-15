@@ -1,7 +1,9 @@
 ﻿namespace Tennis
 {
-    internal class InitialPointsTextGenerator : IScoreTextGenerator
+    internal class InitialPointsTextGenerator : PointsTextGenerator, IScoreTextGenerator
     {
+        private const string Forty = "Forty";
+
         private Player player1;
         private Player player2;
 
@@ -13,27 +15,16 @@
 
         public string GetScore()
         {
-            return GetScoreAsText(player1.GetScore()) + "-" + GetScoreAsText(player2.GetScore());
+            return GetScoreAsText(player1) + Separator + GetScoreAsText(player2);
         }
 
-        private string GetScoreAsText(int score)
+        private string GetScoreAsText(Player player)
         {
-            if (score == 0)
-            {
-                return "Love";
-            }
+            int score = player.GetScore();
+            if (score < 3)
+                return GetDefaultTextForScore(score);
 
-            if (score == 1)
-            {
-                return "Fifteen";
-            }
-
-            if (score == 2)
-            {
-                return "Thirty";
-            }
-
-            return "Forty";
+            return Forty;
         }
     }
 }

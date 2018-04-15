@@ -2,6 +2,9 @@
 {
     internal class FinalPointsTextGenerator : IScoreTextGenerator
     {
+        private const string Advantage = "Advantage";
+        private const string WinFor = "Win for";
+
         private Player player1;
         private Player player2;
 
@@ -17,20 +20,20 @@
 
             if (minusResult == 1)
             {
-                return "Advantage " + player1.GetPlayerName();
+                return Advantage + " " + player1.GetPlayerName();
             }
 
             if (minusResult == -1)
             {
-                return "Advantage " + player2.GetPlayerName();
+                return Advantage + " " + player2.GetPlayerName();
             }
 
             if (minusResult >= 2)
             {
-                return "Win for " + player1.GetPlayerName();
+                return WinFor + " " + player1.GetPlayerName();
             }
 
-            return "Win for " + player2.GetPlayerName();
+            return WinFor + " " + player2.GetPlayerName();
         }
     }
 }

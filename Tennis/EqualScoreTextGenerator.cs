@@ -1,7 +1,10 @@
 ﻿namespace Tennis
 {
-    internal class EqualScoreTextGenerator : IScoreTextGenerator
+    internal class EqualScoreTextGenerator : PointsTextGenerator, IScoreTextGenerator
     {
+        private const string All = "All";
+        private const string Deuce = "Deuce";
+
         private Player player;
 
         public EqualScoreTextGenerator(Player player)
@@ -12,22 +15,10 @@
         public string GetScore()
         {
             int score = player.GetScore();
-            if (score == 0)
-            {
-                return "Love-All";
-            }
+            if (score < 3)
+                return GetDefaultTextForScore(score) + Separator + All;
 
-            if (score == 1)
-            {
-                return "Fifteen-All";
-            }
-
-            if (score == 2)
-            {
-                return "Thirty-All";
-            }
-
-            return "Deuce";
+            return Deuce;
         }
     }
 }
