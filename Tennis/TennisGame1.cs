@@ -7,6 +7,8 @@ namespace Tennis
         private string player1Name;
         private string player2Name;
 
+        enum prueba {a, b, c }
+
         public TennisGame1(string player1Name, string player2Name)
         {
             this.player1Name = player1Name;
@@ -45,24 +47,31 @@ namespace Tennis
             {
                 if (i == 1) tempScore = m_score1;
                 else { score += "-"; tempScore = m_score2; }
-                switch (tempScore)
-                {
-                    case 0:
-                        score += "Love";
-                        break;
-                    case 1:
-                        score += "Fifteen";
-                        break;
-                    case 2:
-                        score += "Thirty";
-                        break;
-                    case 3:
-                        score += "Forty";
-                        break;
-                }
+
+                score += GetTextForScore(tempScore);
             }
 
             return score;
+        }
+
+        private static string GetTextForScore(int score)
+        {
+            if (score == 0)
+            {
+                return "Love";
+            }
+
+            if (score == 1)
+            {
+                return "Fifteen";
+            }
+
+            if (score == 2)
+            {
+                return "Thirty";
+            }
+
+            return "Forty";
         }
 
         private string GetWinOrAdvantageScore()
