@@ -97,12 +97,12 @@ namespace Tennis
 
         private bool IsPlayer1Turn(string playerName)
         {
-            return playerName == "player1";
+            return playerName == this.player1Name;
         }
 
         private bool IsEqualScore()
         {
-            return m_score1 == m_score2;
+            return m_score1.GetValue() == m_score2.GetValue();
         }
 
         private bool IsWinOrAdvantageScore()
