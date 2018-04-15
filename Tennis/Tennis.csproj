@@ -45,9 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EqualScoreTextGenerator.cs" />
+    <Compile Include="FinalPointsTextGenerator.cs" />
+    <Compile Include="InitialPointsTextGenerator.cs" />
+    <Compile Include="IScoreTextGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ITennisGame.cs" />
     <Compile Include="Score.cs" />
+    <Compile Include="ScoreTextGeneratorFactory.cs" />
     <Compile Include="TennisGame1.cs" />
     <Compile Include="TennisGame2.cs" />
     <Compile Include="TennisGame3.cs" />
