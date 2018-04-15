@@ -40,18 +40,7 @@ namespace Tennis
 
         private string GetRegularScore()
         {
-            int tempScore;
-            string score = "";
-
-            for (var i = 1; i < 3; i++)
-            {
-                if (i == 1) tempScore = m_score1;
-                else { score += "-"; tempScore = m_score2; }
-
-                score += GetTextForScore(tempScore);
-            }
-
-            return score;
+            return GetTextForScore(m_score1) + "-" + GetTextForScore(m_score2);
         }
 
         private static string GetTextForScore(int score)
